@@ -1,5 +1,9 @@
 package main
 
+import "fmt"
+
+const compass = "NESW"
+
 type bearing struct {
 	direction int
 }
@@ -16,9 +20,9 @@ func newBearing() bearing {
 }
 
 func (b bearing) String() string {
-	compass := [4]string{"N", "E", "S", "W"}
+	dir := compass[b.direction % 4]
 
-	return compass[b.direction % 4]
+	return fmt.Sprintf("%c", dir)
 }
 
 func (b *bearing) turnRight() {
